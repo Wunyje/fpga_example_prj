@@ -199,7 +199,10 @@ float AngleCal(comp_num c_num)
 {
     float div_value = 0;
     if(c_num.imag == 0)
-        c_num.angle_o = 0;
+        if(c_num.real > 0)
+            c_num.angle_o = 0;
+        else
+            c_num.angle_o = -PI;
     else if(c_num.real == 0)
         if(c_num.imag > 0)
             c_num.angle_o = PI/2;
