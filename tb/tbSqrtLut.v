@@ -39,8 +39,8 @@ module tbSqrtLut();
     
     // read stimulus and result from file_sqrt_in
     initial begin
-        file_sqrt_in = $fopen("/media/aaa/I/_ELSE/fpga_prj/fpga_design_course/task_3/design_src/src.c/para_and_res/mid_sqrt_in.txt", "r");
-        file_sqrt_out = $fopen("/media/aaa/I/_ELSE/fpga_prj/fpga_design_course/task_3/design_src/src.c/para_and_res/res_sqrt_out.txt", "r");
+        file_sqrt_in = $fopen("E:\\_local_files\\prjs\\util_prj\\example_prj\\txt\\mid_sqrt_in.txt", "r");
+        file_sqrt_out = $fopen("E:\\_local_files\\prjs\\util_prj\\example_prj\\txt\\res_sqrt_out.txt", "r");
         cnt = 0;
         while (!$feof(file_sqrt_in)) begin
             $fscanf(file_sqrt_in, "%h", sqrt_in_mem[cnt]);

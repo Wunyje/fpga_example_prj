@@ -42,9 +42,9 @@ module tbCalAbs();
     
     // read stimulus and result from file_real_value
     initial begin
-        file_real_value = $fopen("/media/aaa/I/_ELSE/fpga_prj/fpga_design_course/task_3/design_src/src.c/para_and_res/input_real_value.txt", "r");
-        file_imag_value = $fopen("/media/aaa/I/_ELSE/fpga_prj/fpga_design_course/task_3/design_src/src.c/para_and_res/input_imag_value.txt", "r");
-        file_abs_out = $fopen("/media/aaa/I/_ELSE/fpga_prj/fpga_design_course/task_3/design_src/src.c/para_and_res/res_sqrt_out.txt", "r");
+        file_real_value = $fopen("E:\\_local_files\\prjs\\util_prj\\example_prj\\txt\\input_real_value.txt", "r");
+        file_imag_value = $fopen("E:\\_local_files\\prjs\\util_prj\\example_prj\\txt\\input_imag_value.txt", "r");
+        file_abs_out = $fopen("E:\\_local_files\\prjs\\util_prj\\example_prj\\txt\\res_sqrt_out.txt", "r");
         cnt = 0;
         while (!$feof(file_real_value)) begin
             $fscanf(file_real_value, "%h", real_mem[cnt]);

@@ -44,10 +44,10 @@ module tbPatternMatch();
     
     // read stimulus and result from file_real_value
     initial begin
-        file_real_value = $fopen("/media/aaa/I/_ELSE/fpga_prj/fpga_design_course/task_3/design_src/src.c/para_and_res/input_real_value.txt", "r");
-        file_imag_value = $fopen("/media/aaa/I/_ELSE/fpga_prj/fpga_design_course/task_3/design_src/src.c/para_and_res/input_imag_value.txt", "r");
-        file_mid_atan_out = $fopen("/media/aaa/I/_ELSE/fpga_prj/fpga_design_course/task_3/design_src/src.c/para_and_res/mid_atan_out.txt", "r");
-        file_case_flag_out = $fopen("/media/aaa/I/_ELSE/fpga_prj/fpga_design_course/task_3/design_src/src.c/para_and_res/mid_case_flag_out.txt", "r");
+        file_real_value = $fopen("E:\\_local_files\\prjs\\util_prj\\example_prj\\txt\\input_real_value.txt", "r");
+        file_imag_value = $fopen("E:\\_local_files\\prjs\\util_prj\\example_prj\\txt\\input_imag_value.txt", "r");
+        file_mid_atan_out = $fopen("E:\\_local_files\\prjs\\util_prj\\example_prj\\txt\\mid_atan_out.txt", "r");
+        file_case_flag_out = $fopen("E:\\_local_files\\prjs\\util_prj\\example_prj\\txt\\mid_case_flag_out.txt", "r");
         cnt = 0;
         while (!$feof(file_real_value)) begin
             $fscanf(file_real_value, "%h", real_mem[cnt]);

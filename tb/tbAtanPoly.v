@@ -39,8 +39,8 @@ module tbAtanPoly();
     
     // read stimulus and result from file_atan_in
     initial begin
-        file_atan_in = $fopen("/media/aaa/I/_ELSE/fpga_prj/fpga_design_course/task_3/design_src/src.c/para_and_res/mid_atan_in.txt", "r");
-        file_atan_out = $fopen("/media/aaa/I/_ELSE/fpga_prj/fpga_design_course/task_3/design_src/src.c/para_and_res/res_atan_out.txt", "r");
+        file_atan_in = $fopen("E:\\_local_files\\prjs\\util_prj\\example_prj\\txt\\mid_atan_in.txt", "r");
+        file_atan_out = $fopen("E:\\_local_files\\prjs\\util_prj\\example_prj\\txt\\res_atan_out.txt", "r");
         cnt = 0;
         while (!$feof(file_atan_in)) begin
             $fscanf(file_atan_in, "%h", atan_in_mem[cnt]);
