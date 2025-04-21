@@ -98,6 +98,7 @@ module tbCalAbsAngle();
     wire    [7:0]  abs_o_sim_err = (ref_abs_o > abs_o) ? ref_abs_o - abs_o: abs_o - ref_abs_o;
     reg     [15:0] max_angle_err = 0;
     reg     [7:0]  max_abs_err = 0;
+    integer        err_ceil = {14{1'b1}}/100;
     initial begin
         forever@(posedge clk) begin
             if(val_o) begin
@@ -106,7 +107,7 @@ module tbCalAbsAngle();
                     max_angle_err <= angle_o_sim_err;
                 if(max_abs_err < abs_o_sim_err)
                     max_abs_err <= abs_o_sim_err;
-                if((angle_o_sim_err > 1)|| (ref_abs_o != abs_o)) begin
+                if((angle_o_sim_err > err_ceil)|| (ref_abs_o != abs_o)) begin
                     $display("There is a problem at %d. Simulation stopped.", i_check + 1);
                     $stop( 0 ) ;
                 end

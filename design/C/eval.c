@@ -12,8 +12,8 @@ void eval()
     // data generation
     for (int i = 0; i < N; i++) {
         do {
-            res[i].real = rand() % 256 - 128; // +- 128
-            res[i].imag = rand() % 256 - 128; // +- 128
+            res[i].real = rand() % 256 - 128; // [-127, 128]
+            res[i].imag = rand() % 256 - 128; // [-127, 128]
         } while (sqrt(pow(res[i].real, 2)  + pow(res[i].imag, 2))/ 128.0 > 1.0);
         // results generation
         res[i] = CalAbsAngleTest(res[i].real, res[i].imag);

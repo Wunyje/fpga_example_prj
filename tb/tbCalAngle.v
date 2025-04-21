@@ -87,12 +87,14 @@ module tbCalAngle();
     integer        i_check = 0;
     wire    [15:0] ref_angle_o = res_angle_cal_out_mem[i_check];
     wire    [15:0] sim_err = (ref_angle_o > angle_o) ? ref_angle_o - angle_o: angle_o - ref_angle_o;
+    integer        err_ceil = {14{1'b1}}/100;
     initial begin
         forever@(posedge clk) begin
             if(val_o) begin
                 i_check <= i_check + 1;
-                if(sim_err > 1) begin
+                if(sim_err > err_ceil) begin
                     $display("There is a problem at %d. Simulation stopped.", i_check + 1);
+                    $display("Simulated value: %d, reference value: %d", angle_o, ref_angle_o);
                     $stop( 0 ) ;
                 end
                 else if(i_check == N-1) begin

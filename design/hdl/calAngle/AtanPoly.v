@@ -92,7 +92,7 @@ module AtanPoly(
     MulParaBWrapper mul_para_B(
       .clk        (clk) ,
       .atan_poly_i(atan_poly_i) ,
-      .mul_B_p    (mul_B_w) 
+      .mul_B_p    (mul_B_w) // bring in error there
     );
 
     wire [22:0] mul_A_w;

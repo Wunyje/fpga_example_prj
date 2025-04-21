@@ -88,8 +88,8 @@ int AtanPolyFix(int mid_atan_value)
 {
     int mid_atan_value_pow_2 = pow(mid_atan_value, 2);
     int co_A = -37;
-    int co_B = 1.08* pow(2, 7);
-    int co_C = -0.005194* pow(2, 14);
+    int co_B = 1.08* pow(2, 7); // bring error in hardware
+    int co_C = -0.005194* pow(2, 14); // bring error in hardware
     int mul_co_A = 0;
     int mul_co_B = 0;
     int add_co_C = 0;

@@ -83,6 +83,7 @@ module tbAtanPoly();
                 i_check <= i_check + 1;
                 if(ref_atan_poly_o !=  atan_poly_o) begin
                     $display("There is a problem at index %d. Simulation stopped.", i_check);
+                    $display("Simulated value: %d, reference value: %d", atan_poly_o, ref_atan_poly_o);
                     $stop( 0 ) ;
                 end
                 else if(i_check == N-1) begin
