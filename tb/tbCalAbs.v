@@ -91,7 +91,8 @@ module tbCalAbs();
             if(val_o) begin
                 i_check <= i_check + 1;
                 if(ref_abs_o !=  abs_o) begin
-                    $display("There is a problem at %d. Simulation stopped.", cnt);
+                    $display("There is a problem at %d. Simulation stopped.", i_check+1);
+                    $display("Simulated value: %d, reference value: %d", abs_o, ref_abs_o);
                     $stop( 0 ) ;
                 end
                 else if(i_check == N-1) begin

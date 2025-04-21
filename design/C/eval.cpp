@@ -1,28 +1,5 @@
 #include "cal_abs_angle.h"
 
-int ParaLoad()
-{
-    // data read for lut method
-    FILE* fp_k;
-    FILE* fp_b;
-    fp_k = fopen("../../txt/mat_k_sqrt_interp.txt", "r");
-    fp_b = fopen("../../txt/mat_b_sqrt_interp.txt", "r");
-    if (!fp_k || !fp_b)
-    {
-        printf("Error: Unable to open required files.\n");  
-        exit(EXIT_FAILURE);
-    }
-
-    for (int i = 0; i < 1024; i++) {
-        fscanf(fp_k, "%f", &k_sqrt_interp[i]);
-        fscanf(fp_b, "%f", &b_sqrt_interp[i]);
-        k_sqrt_interp_fix[i] = (int)(k_sqrt_interp[i]*pow(2,14));
-        b_sqrt_interp_fix[i] = (int)(b_sqrt_interp[i]*pow(2,14));
-    }
-    fclose(fp_k);
-    fclose(fp_b);
-}
-
 // 函数测试
 void eval()
 {
@@ -141,10 +118,10 @@ void ResExport()
         fprintf(fp_real_value, "%x\n", real_value);
         fprintf(fp_imag_value, "%x\n", imag_value);
         
-        sqrt_in = pow(real_value, 2) + pow(imag_value, 2);
+        sqrt_in = real_value*real_value + imag_value*imag_value; // don't use pow() in there for type conversion would cause problem
         fprintf(fp_sqrt_in, "%x\n", sqrt_in);
 
-        sqrt_out = sqrt_lut_fix(sqrt_in);
+        sqrt_out = SqrtLutFix(sqrt_in);
         fprintf(fp_sqrt_out, "%x\n", sqrt_out);
 
         c_num = CalAbsAngleTest(real_value, imag_value);
@@ -173,6 +150,6 @@ void ResExport()
 int main()
 {
     eval();
-    // ResExport();
+    ResExport();
     return 1;
 }

@@ -16,7 +16,31 @@ float k_sqrt_interp[1024] = {0};
 float b_sqrt_interp[1024] = {0};
 int k_sqrt_interp_fix[1024] = {0};
 int b_sqrt_interp_fix[1024] = {0};
-int sqrt_lut_fix(int mid_abs_value)
+
+int ParaLoad()
+{
+    // data read for lut method
+    FILE* fp_k;
+    FILE* fp_b;
+    fp_k = fopen("../../txt/mat_k_sqrt_interp.txt", "r");
+    fp_b = fopen("../../txt/mat_b_sqrt_interp.txt", "r");
+    if (!fp_k || !fp_b)
+    {
+        printf("Error: Unable to open required files.\n");  
+        exit(EXIT_FAILURE);
+    }
+
+    for (int i = 0; i < 1024; i++) {
+        fscanf(fp_k, "%f", &k_sqrt_interp[i]);
+        fscanf(fp_b, "%f", &b_sqrt_interp[i]);
+        k_sqrt_interp_fix[i] = (int)(k_sqrt_interp[i]*pow(2,14));
+        b_sqrt_interp_fix[i] = (int)(b_sqrt_interp[i]*pow(2,14));
+    }
+    fclose(fp_k);
+    fclose(fp_b);
+}
+
+int SqrtLutFix(int mid_abs_value)
 {
     int abs_value = 0;
     int k_value = 0;
@@ -234,7 +258,7 @@ comp_num CalAbsAngleTest(char real_i, char imag_i)
 
     // absolute value calculation
     mid_abs_value = c_num.real * c_num.real + c_num.imag * c_num.imag;
-    c_num.abs_o = sqrt_lut_fix(mid_abs_value);
+    c_num.abs_o = SqrtLutFix(mid_abs_value);
     
     return c_num;
 }
